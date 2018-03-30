@@ -4,6 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cpsc3770.listcalendar.AddNewEventActivity">
+    tools:context="com.example.cpsc3770.listcalendar.AddNewEventActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/eventTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Add event title"
+        app:layout_constraintEnd_toEndOf="@+id/eventLocation"
+        app:layout_constraintStart_toStartOf="@+id/eventLocation"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/eventLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Add event location"
+        app:layout_constraintEnd_toEndOf="@+id/eventDate"
+        app:layout_constraintStart_toStartOf="@+id/eventDate"
+        app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
+
+    <EditText
+        android:id="@+id/eventDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Add event date (dd/mm/yyyy)"
+        app:layout_constraintEnd_toEndOf="@+id/eventTime"
+        app:layout_constraintStart_toStartOf="@+id/eventTime"
+        app:layout_constraintTop_toTopOf="@+id/eventLocation" />
+
+    <EditText
+        android:id="@+id/eventTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Add event time (hh:mm)"
+        app:layout_constraintEnd_toEndOf="@+id/eventDuration"
+        app:layout_constraintStart_toStartOf="@+id/eventDuration"
+        app:layout_constraintTop_toBottomOf="@+id/eventDate" />
+
+    <EditText
+        android:id="@+id/eventDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Add event duration (hours)"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventTime" />
 
 </android.support.constraint.ConstraintLayout>
