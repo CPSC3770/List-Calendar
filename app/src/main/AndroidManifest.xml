@@ -19,8 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddNewEventActivity" />
-        <activity android:name=".ViewOrEditCalendarEventActivity"></activity>
+        <activity android:name=".ViewEventActivity" />
+        <activity android:name=".ViewOrEditCalendarEventActivity" />
+        <activity android:name=".SelectTimeActivity" />
+        <activity android:name=".SelectDateActivity"></activity>
     </application>
 
 </manifest>

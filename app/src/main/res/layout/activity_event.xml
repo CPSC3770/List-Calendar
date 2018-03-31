@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cpsc3770.listcalendar.ViewEventActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <EditText
+        android:id="@+id/eventTitle"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Add event title"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/eventLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Add event location"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/submitEventChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <Button
+        android:id="@+id/selectFromDate"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="From Date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/viewFromDate"
+        android:layout_width="106dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Unspecified"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <Button
+        android:id="@+id/selectFromTime"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="From Time"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <TextView
+        android:id="@+id/viewFromTime"
+        android:layout_width="106dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Unspecified"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <Button
+        android:id="@+id/selectToDate"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="To Date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <TextView
+        android:id="@+id/viewToDate"
+        android:layout_width="106dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Unspecified"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <Button
+        android:id="@+id/selectToTime"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:text="To Time"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <TextView
+        android:id="@+id/viewToTime"
+        android:layout_width="106dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Unspecified"
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <Spinner
+        android:id="@+id/colorSpinner"
+        android:layout_width="50dp"
+        android:layout_height="42dp"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="300dp" />
+
+    <TextView
+        android:id="@+id/colorLabel"
+        android:layout_width="50dp"
+        android:layout_height="42dp"
+        android:gravity="center"
+        android:text="Color"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="300dp" />
+
+</android.support.constraint.ConstraintLayout>

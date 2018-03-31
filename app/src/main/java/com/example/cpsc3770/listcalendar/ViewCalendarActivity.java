@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class ViewCalendarActivity extends AppCompatActivity {
 
@@ -16,12 +13,12 @@ public class ViewCalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        // Pencil edit button, does onClick transition to 'AddNewEventActivity'
+        // Add new event button, does onClick transition to 'ViewEventActivity'
         FloatingActionButton AddNewEventButton = (FloatingActionButton) findViewById(R.id.AddNewEvent);
         AddNewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewCalendarActivity.this, AddNewEventActivity.class));
+                startActivity(new Intent(ViewCalendarActivity.this, ViewEventActivity.class));
             }
         });
     }
