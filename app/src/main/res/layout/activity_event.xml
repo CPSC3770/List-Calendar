@@ -7,116 +7,178 @@
     tools:context="com.example.cpsc3770.listcalendar.ViewEventActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <TextView
+        android:id="@+id/eventTitleLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Title"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/eventTitle"
-        android:layout_width="215dp"
+        android:layout_width="184dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Add event title"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/eventTitleLabel"
+        app:layout_constraintStart_toEndOf="@+id/eventTitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventTitleLabel"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <TextView
+        android:id="@+id/eventLocationLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Location"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
 
     <EditText
         android:id="@+id/eventLocation"
-        android:layout_width="0dp"
+        android:layout_width="214dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Add event location"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="62dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/eventLocationLabel"
+        app:layout_constraintStart_toEndOf="@+id/eventLocationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocationLabel"
+        app:layout_constraintVertical_bias="0.478" />
 
     <Button
         android:id="@+id/submitEventChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:text="Save"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/selectFromDate"
-        android:layout_width="106dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
         android:text="From Date"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintEnd_toStartOf="@+id/viewFromDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
 
     <TextView
         android:id="@+id/viewFromDate"
         android:layout_width="106dp"
-        android:layout_height="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="139dp"
         android:gravity="center"
         android:text="Unspecified"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="108dp" />
+        app:layout_constraintBottom_toTopOf="@+id/viewFromTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/selectFromDate"
+        app:layout_constraintTop_toTopOf="@+id/selectFromDate" />
 
     <Button
         android:id="@+id/selectFromTime"
-        android:layout_width="106dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="32dp"
         android:text="From Time"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="156dp" />
+        app:layout_constraintEnd_toStartOf="@+id/viewFromTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromDate" />
 
     <TextView
         android:id="@+id/viewFromTime"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="Unspecified"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="156dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewToDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/selectFromTime"
+        app:layout_constraintTop_toTopOf="@+id/selectFromDate" />
 
     <Button
         android:id="@+id/selectToDate"
-        android:layout_width="106dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="32dp"
         android:text="To Date"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="204dp" />
+        app:layout_constraintEnd_toStartOf="@+id/viewToDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromTime" />
 
     <TextView
         android:id="@+id/viewToDate"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="Unspecified"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="204dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/viewToTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/selectToDate"
+        app:layout_constraintTop_toTopOf="@+id/selectFromTime" />
 
     <Button
         android:id="@+id/selectToTime"
-        android:layout_width="106dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="32dp"
         android:text="To Time"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="252dp" />
+        app:layout_constraintEnd_toStartOf="@+id/viewToTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
 
     <TextView
         android:id="@+id/viewToTime"
         android:layout_width="106dp"
-        android:layout_height="48dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="139dp"
         android:gravity="center"
         android:text="Unspecified"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="252dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/selectToTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/selectToTime"
+        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
 
     <Spinner
         android:id="@+id/colorSpinner"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="300dp" />
+        android:layout_marginEnd="252dp"
+        android:layout_marginTop="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/colorLabel"
+        app:layout_constraintTop_toTopOf="@+id/selectToTime" />
 
     <TextView
         android:id="@+id/colorLabel"
-        android:layout_width="50dp"
-        android:layout_height="42dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
         android:gravity="center"
         android:text="Color"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/colorSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/colorSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/colorSpinner" />
 
 </android.support.constraint.ConstraintLayout>
