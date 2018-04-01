@@ -22,7 +22,7 @@ public class SetTimeActivity extends AppCompatActivity {
         String calendarEventAsJson = bundle.getString("event");
         m_event = CalendarEvent.fromJson(calendarEventAsJson);
 
-        final TimePicker timePicker = (TimePicker)findViewById(R.id.timePicker);
+        final TimePicker timePicker = findViewById(R.id.timePicker);
 
         // Set hand positions to current values
         if(m_event.fromTimeChange()){
@@ -36,15 +36,19 @@ public class SetTimeActivity extends AppCompatActivity {
         }
 
         // "Set" button listener
-        Button setButton = (Button)findViewById(R.id.setButton);
+        Button setButton = findViewById(R.id.setButton);
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(m_event.fromTimeChange()){
-                    m_event.setFromTime(timePicker.getHour(), timePicker.getMinute());
+                    m_event.setFromTime(
+                            timePicker.getHour(),
+                            timePicker.getMinute());
                 }else{
                     if(m_event.toTimeChange()){
-                        m_event.setToTime(timePicker.getHour(), timePicker.getMinute());
+                        m_event.setToTime(
+                                timePicker.getHour(),
+                                timePicker.getMinute());
                     }
                 }
                 String eventAsJson = m_event.toJson();
@@ -55,7 +59,7 @@ public class SetTimeActivity extends AppCompatActivity {
         });
 
         // "Cancel" button listener
-        Button cancelButton = (Button)findViewById(R.id.cancelButton);
+        Button cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

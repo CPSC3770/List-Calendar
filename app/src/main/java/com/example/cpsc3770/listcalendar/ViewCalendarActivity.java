@@ -16,7 +16,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         // "+" Floating Action Button listener (Behaves as "Add New Event"
-        FloatingActionButton AddNewEventButton = (FloatingActionButton) findViewById(R.id.AddNewEvent);
+        FloatingActionButton AddNewEventButton = findViewById(R.id.AddNewEvent);
         AddNewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
-
 public class ViewEventActivity extends AppCompatActivity {
 
     // Member variables
@@ -34,20 +31,20 @@ public class ViewEventActivity extends AppCompatActivity {
         }
 
         // Set views
-        TextView fromDateView = (TextView)findViewById(R.id.viewFromDate);
+        TextView fromDateView = findViewById(R.id.viewFromDate);
         fromDateView.setText(m_event.viewFromDateAsString());
 
-        TextView fromTimeView = (TextView)findViewById(R.id.viewFromTime);
+        TextView fromTimeView = findViewById(R.id.viewFromTime);
         fromTimeView.setText(m_event.viewFromTimeAsString());
 
-        TextView toDateView = (TextView)findViewById(R.id.viewToDate);
+        TextView toDateView = findViewById(R.id.viewToDate);
         toDateView.setText(m_event.viewToDateAsString());
 
-        TextView toTimeView = (TextView)findViewById(R.id.viewToTime);
+        TextView toTimeView = findViewById(R.id.viewToTime);
         toTimeView.setText(m_event.viewToTimeAsString());
 
         // "Title" edit text listener
-        EditText titleField = (EditText)findViewById(R.id.eventTitle);
+        EditText titleField = findViewById(R.id.eventTitle);
         titleField.setText(m_event.viewTitle());
         titleField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -76,7 +73,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "Location" edit text listener
-        EditText locationField = (EditText)findViewById(R.id.eventLocation);
+        EditText locationField = findViewById(R.id.eventLocation);
         locationField.setText(m_event.viewLocation());
         locationField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -105,7 +102,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "From Date" button listener
-        Button selectFromDate = (Button)findViewById(R.id.selectFromDate);
+        Button selectFromDate = findViewById(R.id.selectFromDate);
         selectFromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +115,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "From Time" button listener
-        Button selectFromTime = (Button)findViewById(R.id.selectFromTime);
+        Button selectFromTime = findViewById(R.id.selectFromTime);
         selectFromTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,7 +128,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "To Date" button listener
-        Button selectToDate = (Button)findViewById(R.id.selectToDate);
+        Button selectToDate = findViewById(R.id.selectToDate);
         selectToDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,7 +141,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "To Time" button listener
-        Button selectToTime = (Button)findViewById(R.id.selectToTime);
+        Button selectToTime = findViewById(R.id.selectToTime);
         selectToTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,7 +154,7 @@ public class ViewEventActivity extends AppCompatActivity {
         });
 
         // "Save" button listener
-        Button submitEventChanges = (Button)findViewById(R.id.submitEventChanges);
+        Button submitEventChanges = findViewById(R.id.submitEventChanges);
         submitEventChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

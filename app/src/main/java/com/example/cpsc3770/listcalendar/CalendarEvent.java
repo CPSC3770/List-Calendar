@@ -77,7 +77,7 @@ class CalendarEvent {
         this.m_fromDateBeingSet = false;
     }
 
-    private boolean hasFromDate() {
+    boolean hasFromDate() {
         return (this.m_fromYear != -1) &&
                 (this.m_fromMonth != -1) &&
                 (this.m_fromDay != -1);
@@ -108,7 +108,6 @@ class CalendarEvent {
         return this.m_fromTimeBeingSet;
     }
 
-
     public void setFromTime(
             int fromHour,
             int fromMinute){
@@ -118,7 +117,7 @@ class CalendarEvent {
         this.m_fromTimeBeingSet = false;
     }
 
-    private boolean hasFromTime(){
+    boolean hasFromTime(){
         return (this.m_fromHour != -1) &&
                 (this.m_fromMinute != -1);
     }
@@ -164,7 +163,7 @@ class CalendarEvent {
         this.m_toDateBeingSet = false;
     }
 
-    private boolean hasToDate(){
+    boolean hasToDate(){
         return (this.m_toYear != -1) &&
                 (this.m_toMonth != -1) &&
                 (this.m_toDay != -1);
@@ -206,7 +205,7 @@ class CalendarEvent {
         this.m_toTimeBeingSet = false;
     }
 
-    private boolean hasToTime(){
+    boolean hasToTime(){
         return (this.m_toHour != -1) &&
                 (this.m_toMinute != -1);
     }
