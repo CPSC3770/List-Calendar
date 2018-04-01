@@ -1,6 +1,7 @@
 package com.example.cpsc3770.listcalendar;
 
 import java.io.Serializable;
+import com.google.gson.Gson;
 
 /**
  * Created by Alex Hochheiden on 3/30/2018.
@@ -165,5 +166,15 @@ class CalendarEvent implements Serializable {
 
     public void setColor(int color){
         this.m_color = color;
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public static CalendarEvent fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, CalendarEvent.class);
     }
 }
