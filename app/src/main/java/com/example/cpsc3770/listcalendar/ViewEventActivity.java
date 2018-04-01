@@ -22,12 +22,8 @@ public class ViewEventActivity extends AppCompatActivity {
         // Receive event object from previous activity
         Bundle bundle = getIntent().getExtras();
         String calendarEventAsJson = bundle.getString("event");
+        m_event = CalendarEvent.fromJson(calendarEventAsJson);
 
-        if(calendarEventAsJson == null) {
-            m_event = new CalendarEvent();
-        }else{
-            m_event = CalendarEvent.fromJson(calendarEventAsJson);
-        }
 
         // Set views
         TextView fromDateView = findViewById(R.id.viewFromDate);
