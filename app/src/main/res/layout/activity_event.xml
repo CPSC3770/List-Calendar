@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.cpsc3770.listcalendar.ViewEventActivity"
     tools:layout_editor_absoluteY="81dp">
-
     <TextView
         android:id="@+id/eventTitleLabel"
         android:layout_width="0dp"
