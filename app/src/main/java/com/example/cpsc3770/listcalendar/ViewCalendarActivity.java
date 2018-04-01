@@ -8,6 +8,8 @@ import android.view.View;
 
 public class ViewCalendarActivity extends AppCompatActivity {
 
+    CalendarEvent m_event = new CalendarEvent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,10 @@ public class ViewCalendarActivity extends AppCompatActivity {
         AddNewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewCalendarActivity.this, ViewEventActivity.class));
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
     }

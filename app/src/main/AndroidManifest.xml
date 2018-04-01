@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".ViewEventActivity" />
         <activity android:name=".ViewOrEditCalendarEventActivity" />
+        <activity android:name=".SetTimeActivity" />
+        <activity android:name=".SetDateActivity"></activity>
     </application>
 
 </manifest>

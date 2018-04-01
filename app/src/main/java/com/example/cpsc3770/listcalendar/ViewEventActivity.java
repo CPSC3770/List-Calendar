@@ -8,25 +8,47 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class ViewEventActivity extends AppCompatActivity {
 
-    // Members variables
-
-    // Helper
-    boolean m_fromSelected = true;
-
-    // Raw data values
-    CalendarEvent m_event = new CalendarEvent();
+    // Member variables
+    CalendarEvent m_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
+        // Receive event object from previous activity
+        Bundle bundle = getIntent().getExtras();
+        String calendarEventAsJson = bundle.getString("event");
+
+        if(calendarEventAsJson == null) {
+            m_event = new CalendarEvent();
+        }else{
+            m_event = CalendarEvent.fromJson(calendarEventAsJson);
+        }
+
+        // Set views
+        TextView fromDateView = (TextView)findViewById(R.id.viewFromDate);
+        fromDateView.setText(m_event.viewFromDateAsString());
+
+        TextView fromTimeView = (TextView)findViewById(R.id.viewFromTime);
+        fromTimeView.setText(m_event.viewFromTimeAsString());
+
+        TextView toDateView = (TextView)findViewById(R.id.viewToDate);
+        toDateView.setText(m_event.viewToDateAsString());
+
+        TextView toTimeView = (TextView)findViewById(R.id.viewToTime);
+        toTimeView.setText(m_event.viewToTimeAsString());
+
         // "Title" edit text listener
         EditText titleField = (EditText)findViewById(R.id.eventTitle);
+        titleField.setText(m_event.viewTitle());
         titleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(
@@ -55,6 +77,7 @@ public class ViewEventActivity extends AppCompatActivity {
 
         // "Location" edit text listener
         EditText locationField = (EditText)findViewById(R.id.eventLocation);
+        locationField.setText(m_event.viewLocation());
         locationField.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(
@@ -86,7 +109,11 @@ public class ViewEventActivity extends AppCompatActivity {
         selectFromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_fromSelected = true;
+                m_event.prepareFromDateChange();
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewEventActivity.this, SetDateActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
 
@@ -95,7 +122,11 @@ public class ViewEventActivity extends AppCompatActivity {
         selectFromTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_fromSelected = true;
+                m_event.prepareFromTimeChange();
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewEventActivity.this, SetTimeActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
 
@@ -104,7 +135,11 @@ public class ViewEventActivity extends AppCompatActivity {
         selectToDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_fromSelected = false;
+                m_event.prepareToDateChange();
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewEventActivity.this, SetDateActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
 
@@ -113,7 +148,11 @@ public class ViewEventActivity extends AppCompatActivity {
         selectToTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m_fromSelected = false;
+                m_event.prepareToTimeChange();
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewEventActivity.this, SetTimeActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
 
@@ -122,7 +161,10 @@ public class ViewEventActivity extends AppCompatActivity {
         submitEventChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewEventActivity.this, ViewCalendarActivity.class));
+                String eventAsJson = m_event.toJson();
+                Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
+                intent.putExtra("event", eventAsJson);
+                startActivity(intent);
             }
         });
     }
