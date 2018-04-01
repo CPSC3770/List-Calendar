@@ -11,9 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class ViewEventActivity extends AppCompatActivity {
-
     // Member variables
-    CalendarEvent m_event;
+    private CalendarEvent m_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

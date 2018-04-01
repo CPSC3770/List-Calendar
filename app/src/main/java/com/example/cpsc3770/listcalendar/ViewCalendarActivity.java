@@ -7,13 +7,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class ViewCalendarActivity extends AppCompatActivity {
-
-    CalendarEvent m_event = new CalendarEvent();
+    // Member variables
+    private CalendarEvent m_event;
+    // #TODO <event list here>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        // Receive event, catch is for fresh launch
+        Bundle bundle = getIntent().getExtras();
+        try{
+            String calendarEventAsJson = bundle.getString("event");
+            // #TODO add this to some kind of list, compare UUID of every element in the list first to determine if it was an edit or not
+            m_event = CalendarEvent.fromJson(calendarEventAsJson);
+        } catch (java.lang.NullPointerException e){
+            m_event = new CalendarEvent();
+        }
 
         // "+" Floating Action Button listener (Behaves as "Add New Event"
         FloatingActionButton AddNewEventButton = findViewById(R.id.AddNewEvent);

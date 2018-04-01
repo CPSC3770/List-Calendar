@@ -7,7 +7,6 @@ import com.google.gson.Gson;
  */
 
 class CalendarEvent {
-
     // Member variables
     private static int counter = 0;
 

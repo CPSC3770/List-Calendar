@@ -9,8 +9,8 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 
 public class SetDateActivity extends AppCompatActivity {
-
-    CalendarEvent m_event;
+    // Member variables
+    private CalendarEvent m_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

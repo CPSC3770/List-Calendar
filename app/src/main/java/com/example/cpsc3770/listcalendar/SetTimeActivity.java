@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class SetTimeActivity extends AppCompatActivity {
-
-    CalendarEvent m_event;
+    // Member variables
+    private CalendarEvent m_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
