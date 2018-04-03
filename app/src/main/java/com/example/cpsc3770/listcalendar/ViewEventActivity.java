@@ -159,5 +159,15 @@ public class ViewEventActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // "Cancel" button listener
+        Button cancelEventChanges = findViewById(R.id.cancelEventChanges);
+        cancelEventChanges.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

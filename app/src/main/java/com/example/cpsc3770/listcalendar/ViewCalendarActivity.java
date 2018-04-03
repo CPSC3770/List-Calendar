@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
-    private CalendarEvent m_event;
     // #TODO <event list here>
 
     @Override
@@ -20,14 +19,14 @@ public class ViewCalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        // Receive event, catch is for fresh launch
+        // Receive event, catch is for fresh launch or cancel on next window
         Bundle bundle = getIntent().getExtras();
         try{
             String calendarEventAsJson = bundle.getString("event");
             // #TODO add this to some kind of list, compare UUID of every element in the list first to determine if it was an edit or not
-            m_event = CalendarEvent.fromJson(calendarEventAsJson);
+            CalendarEvent receivedEvent = CalendarEvent.fromJson(calendarEventAsJson);
         } catch (java.lang.NullPointerException e){
-            m_event = new CalendarEvent();
+            // Do nothing
         }
 
         // TODO : remove this temp
@@ -42,9 +41,12 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // TODO : make new window showing full calendar event w/ edit option
-                        String temp = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(ViewCalendarActivity.this, temp, Toast.LENGTH_LONG).show();
+                        // TODO make temp event pull from list of real events based on position
+                        CalendarEvent tempEvent = new CalendarEvent(); // Replace with real event from list
+                        String eventAsJson = tempEvent.toJson();
+                        Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                        intent.putExtra("event", eventAsJson);
+                        startActivity(intent);
                     }
                 }
         );
@@ -55,7 +57,8 @@ public class ViewCalendarActivity extends AppCompatActivity {
         AddNewEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String eventAsJson = m_event.toJson();
+                CalendarEvent newEvent = new CalendarEvent();
+                String eventAsJson = newEvent.toJson();
                 Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
