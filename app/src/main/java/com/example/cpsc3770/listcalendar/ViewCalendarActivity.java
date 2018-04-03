@@ -63,7 +63,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         // TODO make temp event pull from list of real events based on position
-                        CalendarEvent tempEvent = new CalendarEvent(); // Replace with real event from list
+                        CalendarEvent tempEvent = m_eventList.get(position);
                         String eventAsJson = tempEvent.toJson();
                         Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
                         intent.putExtra("event", eventAsJson);
