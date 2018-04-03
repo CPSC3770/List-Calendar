@@ -9,10 +9,14 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
-    // #TODO <event list here>
+    // TODO i think we need save/restore code or this list will be empty every time we come back to this activity
+    List<CalendarEvent> m_eventList = new ArrayList<CalendarEvent>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,24 @@ public class ViewCalendarActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         try{
             String calendarEventAsJson = bundle.getString("event");
-            // #TODO add this to some kind of list, compare UUID of every element in the list first to determine if it was an edit or not
             CalendarEvent receivedEvent = CalendarEvent.fromJson(calendarEventAsJson);
+
+            boolean found = false;
+
+            for(int i = 0; i < this.m_eventList.size(); i++){
+                if(receivedEvent.viewUUID() == this.m_eventList.get(i).viewUUID()){
+                    found = true;
+                    this.m_eventList.set(i, receivedEvent);
+                    break;
+                }
+            }
+
+            if(!found){
+                m_eventList.add(receivedEvent);
+                Collections.sort(m_eventList);
+            }else{
+                // Do nothing
+            }
         } catch (java.lang.NullPointerException e){
             // Do nothing
         }
@@ -33,17 +53,9 @@ public class ViewCalendarActivity extends AppCompatActivity {
         String[] tempEvents = {"First", "Second", "Third", "Fourth", "Fifth",
                                "Sixth", "Seventh", "Eighth", "Ninth"};
 
-        // TODO temp example sort code
-        List<CalendarEvent> eventList = new ArrayList<CalendarEvent>();
-        eventList.add(new CalendarEvent());
-        eventList.add(new CalendarEvent());
-        eventList.add(new CalendarEvent());
-        eventList.add(new CalendarEvent());
-
-        Collections.sort(eventList);
-
+        // TODO make this work with m_eventList instead
         ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
-        ListView customListView = (ListView) findViewById(R.id.CalendarEventList);
+        ListView customListView = findViewById(R.id.CalendarEventList);
         customListView.setAdapter(customListAdapter);
 
         customListView.setOnItemClickListener(
