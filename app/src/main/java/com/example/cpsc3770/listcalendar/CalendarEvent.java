@@ -6,7 +6,7 @@ import com.google.gson.Gson;
  * Created by Alex Hochheiden on 3/30/2018.
  */
 
-class CalendarEvent {
+class CalendarEvent implements Comparable<CalendarEvent>  {
     // Member variables
     private static int counter = 0;
 
@@ -253,5 +253,11 @@ class CalendarEvent {
         this.m_fromTimeBeingSet = false;
         this.m_toDateBeingSet = false;
         this.m_toTimeBeingSet = false;
+    }
+
+    @Override
+    public int compareTo(CalendarEvent rhs) {
+        // TODO implement this correctly for all from values
+        return Integer.compare(this.viewFromYear(), rhs.viewFromYear()); // this is wrong
     }
 }

@@ -33,6 +33,15 @@ public class ViewCalendarActivity extends AppCompatActivity {
         String[] tempEvents = {"First", "Second", "Third", "Fourth", "Fifth",
                                "Sixth", "Seventh", "Eighth", "Ninth"};
 
+        // TODO temp example sort code
+        List<CalendarEvent> eventList = new ArrayList<CalendarEvent>();
+        students.add(new CalendarEvent());
+        students.add(new CalendarEvent());
+        students.add(new CalendarEvent());
+        students.add(new CalendarEvent());
+
+        Collections.sort(eventList);
+
         ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
         ListView customListView = (ListView) findViewById(R.id.CalendarEventList);
         customListView.setAdapter(customListAdapter);
