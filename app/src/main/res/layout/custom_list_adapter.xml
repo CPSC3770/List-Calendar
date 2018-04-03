@@ -10,7 +10,7 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:padding="5dp"
-        app:srcCompat="@drawable/placeHolder" />
+        app:srcCompat="@drawable/placeholder" />
 
     <TextView
         android:id="@+id/calendarListTitle"

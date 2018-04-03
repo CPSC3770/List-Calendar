@@ -35,7 +35,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                                "Sixth", "Seventh", "Eighth", "Ninth"};
 
         ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
-        ListView customListView = (ListView) findViewByID(R.id.CalendarEventList);
+        ListView customListView = (ListView) findViewById(R.id.CalendarEventList);
         customListView.setAdapter(customListAdapter);
 
         customListView.setOnItemClickListener(

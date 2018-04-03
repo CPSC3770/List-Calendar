@@ -27,7 +27,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
 
         itemText.setText(singleEvent);
-        calendarImage.setImageResource(R.drawable.calendarListImage);
+        calendarImage.setImageResource(R.drawable.placeholder);
 
         return customView;
     }
