@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
@@ -25,6 +29,26 @@ public class ViewCalendarActivity extends AppCompatActivity {
         } catch (java.lang.NullPointerException e){
             m_event = new CalendarEvent();
         }
+
+        // TODO : remove this temp
+        String[] tempEvents = {"First", "Second", "Third", "Fourth", "Fifth",
+                               "Sixth", "Seventh", "Eighth", "Ninth"};
+
+        ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
+        ListView customListView = (ListView) findViewByID(R.id.CalendarEventList);
+        customListView.setAdapter(customListAdapter);
+
+        customListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // TODO : make new window showing full calendar event w/ edit option
+                        String temp = String.valueOf(parent.getItemAtPosition(position));
+                        Toast.makeText(ViewCalendarActivity.this, temp, Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+
 
         // "+" Floating Action Button listener (Behaves as "Add New Event"
         FloatingActionButton AddNewEventButton = findViewById(R.id.AddNewEvent);
