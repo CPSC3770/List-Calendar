@@ -35,10 +35,10 @@ public class ViewCalendarActivity extends AppCompatActivity {
 
         // TODO temp example sort code
         List<CalendarEvent> eventList = new ArrayList<CalendarEvent>();
-        students.add(new CalendarEvent());
-        students.add(new CalendarEvent());
-        students.add(new CalendarEvent());
-        students.add(new CalendarEvent());
+        eventList.add(new CalendarEvent());
+        eventList.add(new CalendarEvent());
+        eventList.add(new CalendarEvent());
+        eventList.add(new CalendarEvent());
 
         Collections.sort(eventList);
 
