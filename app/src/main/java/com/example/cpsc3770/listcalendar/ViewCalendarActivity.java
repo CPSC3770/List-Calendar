@@ -41,10 +41,11 @@ public class ViewCalendarActivity extends AppCompatActivity {
 
             if(!found){
                 m_eventList.add(receivedEvent);
-                Collections.sort(m_eventList);
             }else{
                 // Do nothing
             }
+
+            Collections.sort(m_eventList);
         } catch (java.lang.NullPointerException e){
             // Do nothing
         }

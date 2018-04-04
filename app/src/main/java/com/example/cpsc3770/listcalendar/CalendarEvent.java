@@ -257,7 +257,46 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
 
     @Override
     public int compareTo(CalendarEvent rhs) {
-        // TODO implement this correctly for all from values
-        return Integer.compare(this.viewFromYear(), rhs.viewFromYear()); // this is wrong
+        if(this.viewFromYear() != rhs.viewFromYear()){
+            Integer.compare(this.viewFromYear(), rhs.viewFromYear());
+        }else{
+            if(this.viewFromMonth() != rhs.viewFromMonth()){
+                Integer.compare(this.viewFromMonth(), rhs.viewFromMonth());
+            }else{
+                if(this.viewFromDay() != rhs.viewFromDay()){
+                    Integer.compare(this.viewFromDay(), rhs.viewFromDay());
+                }else{
+                    if(this.viewFromHour() != rhs.viewFromHour()){
+                        Integer.compare(this.viewFromHour(), rhs.viewFromHour());
+                    }else{
+                        if(this.viewFromMinute() != rhs.viewFromMinute()){
+                            Integer.compare(this.viewFromMinute(), rhs.viewFromMinute());
+                        }else{
+                            if(this.viewToYear() != rhs.viewToYear())                            {
+                                Integer.compare(this.viewToYear(), rhs.viewToYear());
+                            }else{
+                                if(this.viewToMonth() != rhs.viewToMonth()){
+                                    Integer.compare(this.viewToMonth(), rhs.viewToMonth());
+                                }else{
+                                    if(this.viewToDay() != rhs.viewToDay()){
+                                        Integer.compare(this.viewToDay(), rhs.viewToDay());
+                                    }else{
+                                        if(this.viewToHour() != rhs.viewToHour()){
+                                            Integer.compare(this.viewToHour(), rhs.viewToHour());
+                                        }else{
+                                            if(this.viewToMinute() != rhs.viewToMinute()){
+                                                Integer.compare(this.viewToMinute(), rhs.viewToMinute());
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return 0;
     }
 }
