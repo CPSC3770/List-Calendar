@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class EditOrCreateEventActivity extends AppCompatActivity {
     // Member variables
     private CalendarEvent m_event;
+    private boolean m_originIsView = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

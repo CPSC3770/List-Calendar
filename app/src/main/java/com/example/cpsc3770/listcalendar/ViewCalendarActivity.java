@@ -87,7 +87,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         CalendarEvent tempEvent = m_eventList.get(position);
                         String eventAsJson = tempEvent.toJson();
-                        Intent intent = new Intent(ViewCalendarActivity.this, EditOrCreateEventActivity.class);
+                        Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
                         intent.putExtra("event", eventAsJson);
                         startActivity(intent);
                     }

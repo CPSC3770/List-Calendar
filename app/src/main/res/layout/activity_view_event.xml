@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cpsc3770.listcalendar.ViewEventActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/eventTitleLabel"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Title:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />/>
+
+    <TextView
+        android:id="@+id/eventTitle"
+        android:layout_width="240dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/eventTitleLabel"
+        app:layout_constraintTop_toTopOf="@+id/eventTitleLabel" />
+
+    <TextView
+        android:id="@+id/eventLocationLabel"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:text="Location:"
+        app:layout_constraintStart_toStartOf="@+id/eventTitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventTitleLabel"/>
+
+    <TextView
+        android:id="@+id/eventLocation"
+        android:layout_width="240dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/eventLocationLabel"
+        app:layout_constraintTop_toTopOf="@+id/eventLocationLabel"/>
+
+    <TextView
+        android:id="@+id/selectFromDate"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:text="From Date:"
+        app:layout_constraintStart_toStartOf="@+id/eventLocationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocationLabel" />
+
+    <TextView
+        android:id="@+id/viewFromDate"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectFromDate"
+        app:layout_constraintTop_toTopOf="@+id/selectFromDate"/>
+
+    <TextView
+        android:id="@+id/selectFromTime"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:text="From Time:"
+        app:layout_constraintStart_toStartOf="@+id/selectFromDate"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromDate" />
+
+    <TextView
+        android:id="@+id/viewFromTime"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectFromTime"
+        app:layout_constraintTop_toTopOf="@+id/selectFromTime" />
+
+    <TextView
+        android:id="@+id/selectToDate"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:text="To Date:"
+        app:layout_constraintStart_toStartOf="@+id/selectFromTime"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromTime" />
+
+    <TextView
+        android:id="@+id/viewToDate"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectToDate"
+        app:layout_constraintTop_toTopOf="@+id/selectToDate" />
+
+    <TextView
+        android:id="@+id/selectToTime"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:text="To Time:"
+        app:layout_constraintStart_toStartOf="@+id/selectToDate"
+        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
+
+    <TextView
+        android:id="@+id/viewToTime"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectToTime"
+        app:layout_constraintTop_toTopOf="@+id/selectToTime" />
+
+    <TextView
+        android:id="@+id/colorLabel"
+        android:layout_width="110dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:gravity="left|center"
+        android:text="Color:"
+        app:layout_constraintStart_toStartOf="@+id/selectToTime"
+        app:layout_constraintTop_toBottomOf="@+id/selectToTime" />
+
+    <Button
+        android:id="@+id/submitEventChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Return"
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/cancelEventChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Edit"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="192dp" />
+
+</android.support.constraint.ConstraintLayout>
