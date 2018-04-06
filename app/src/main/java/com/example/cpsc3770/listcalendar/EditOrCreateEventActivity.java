@@ -10,32 +10,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ViewEventActivity extends AppCompatActivity {
+public class EditOrCreateEventActivity extends AppCompatActivity {
     // Member variables
     private CalendarEvent m_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.activity_edit_or_create_event);
 
         // Receive event object from previous activity
         Bundle bundle = getIntent().getExtras();
         String calendarEventAsJson = bundle.getString("event");
-        m_event = CalendarEvent.fromJson(calendarEventAsJson);
+        this.m_event = CalendarEvent.fromJson(calendarEventAsJson);
 
         // Set views
         TextView fromDateView = findViewById(R.id.viewFromDate);
-        fromDateView.setText(m_event.viewFromDateAsString());
+        fromDateView.setText(this.m_event.viewFromDateAsString());
 
         TextView fromTimeView = findViewById(R.id.viewFromTime);
-        fromTimeView.setText(m_event.viewFromTimeAsString());
+        fromTimeView.setText(this.m_event.viewFromTimeAsString());
 
         TextView toDateView = findViewById(R.id.viewToDate);
-        toDateView.setText(m_event.viewToDateAsString());
+        toDateView.setText(this.m_event.viewToDateAsString());
 
         TextView toTimeView = findViewById(R.id.viewToTime);
-        toTimeView.setText(m_event.viewToTimeAsString());
+        toTimeView.setText(this.m_event.viewToTimeAsString());
 
         // "Title" edit text listener
         EditText titleField = findViewById(R.id.eventTitle);
@@ -102,7 +102,7 @@ public class ViewEventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.prepareFromDateChange();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(ViewEventActivity.this, SetDateActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, SetDateActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -115,7 +115,7 @@ public class ViewEventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.prepareFromTimeChange();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(ViewEventActivity.this, SetTimeActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, SetTimeActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -128,7 +128,7 @@ public class ViewEventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.prepareToDateChange();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(ViewEventActivity.this, SetDateActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, SetDateActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -141,7 +141,7 @@ public class ViewEventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.prepareToTimeChange();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(ViewEventActivity.this, SetTimeActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, SetTimeActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -153,7 +153,7 @@ public class ViewEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, ViewCalendarActivity.class);
                 intent.putExtra("event", eventAsJson);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
@@ -165,7 +165,7 @@ public class ViewEventActivity extends AppCompatActivity {
         cancelEventChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
+                Intent intent = new Intent(EditOrCreateEventActivity.this, ViewCalendarActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }

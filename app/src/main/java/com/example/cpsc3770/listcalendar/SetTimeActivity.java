@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class SetTimeActivity extends AppCompatActivity {
@@ -52,7 +51,7 @@ public class SetTimeActivity extends AppCompatActivity {
                     }
                 }
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(SetTimeActivity.this, ViewEventActivity.class);
+                Intent intent = new Intent(SetTimeActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -65,7 +64,7 @@ public class SetTimeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.cancelPressed();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(SetTimeActivity.this, ViewEventActivity.class);
+                Intent intent = new Intent(SetTimeActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }

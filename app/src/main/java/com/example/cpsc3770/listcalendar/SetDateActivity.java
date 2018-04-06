@@ -75,7 +75,7 @@ public class SetDateActivity extends AppCompatActivity {
                     }
                 }
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(SetDateActivity.this, ViewEventActivity.class);
+                Intent intent = new Intent(SetDateActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
@@ -88,7 +88,7 @@ public class SetDateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 m_event.cancelPressed();
                 String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(SetDateActivity.this, ViewEventActivity.class);
+                Intent intent = new Intent(SetDateActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }

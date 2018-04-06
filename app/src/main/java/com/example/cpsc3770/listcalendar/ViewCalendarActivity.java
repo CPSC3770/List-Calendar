@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -87,7 +87,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         CalendarEvent tempEvent = m_eventList.get(position);
                         String eventAsJson = tempEvent.toJson();
-                        Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                        Intent intent = new Intent(ViewCalendarActivity.this, EditOrCreateEventActivity.class);
                         intent.putExtra("event", eventAsJson);
                         startActivity(intent);
                     }
@@ -102,7 +102,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 CalendarEvent newEvent = new CalendarEvent();
                 String eventAsJson = newEvent.toJson();
-                Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                Intent intent = new Intent(ViewCalendarActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
             }
