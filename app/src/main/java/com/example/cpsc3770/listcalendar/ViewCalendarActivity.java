@@ -16,7 +16,6 @@ import java.util.Collections;
 
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
-    // TODO i think we need save/restore code or this list will be empty every time we come back to this activity
     List<CalendarEvent> m_eventList;
     private static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
 
@@ -28,8 +27,8 @@ public class ViewCalendarActivity extends AppCompatActivity {
         // Restore saved instance state if it exists
         if(savedInstanceState != null){
             String calendarEventListAsJson = savedInstanceState.getString(KEY_EVENT_LIST);
-            CalendarEventList savedState = CalendarEventList.fromJson(calendarEventListAsJson);
-            this.m_eventList = savedState.viewEventList();
+            CalendarEventList savedCalendarEventList = CalendarEventList.fromJson(calendarEventListAsJson);
+            this.m_eventList = savedCalendarEventList.viewEventList();
         }else{
             this.m_eventList = new ArrayList<CalendarEvent>();
         }
@@ -41,8 +40,6 @@ public class ViewCalendarActivity extends AppCompatActivity {
             CalendarEvent receivedEvent = CalendarEvent.fromJson(calendarEventAsJson);
 
             boolean found = false;
-
-            System.out.println(this.m_eventList.size());
 
             for(int i = 0; i < this.m_eventList.size(); i++){
                 if(receivedEvent.viewUUID() == this.m_eventList.get(i).viewUUID()){
@@ -62,10 +59,17 @@ public class ViewCalendarActivity extends AppCompatActivity {
         }
 
         // TODO : remove this temp
-        String[] tempEvents = {"First", "Second", "Third", "Fourth", "Fifth",
-                               "Sixth", "Seventh", "Eighth", "Ninth"};
+        String[] tempEvents = {};
+        if(this.m_eventList.size() != 0){
+            tempEvents = new String[this.m_eventList.size()];
+            for(int i = 0; i < this.m_eventList.size(); i++){
+                tempEvents[i] = this.m_eventList.get(i).viewTitle();
+            }
+        }else{
+            tempEvents = new String[] {"First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"};
+        }
 
-        // TODO make this work with m_eventList instead
+        // TODO make this work with m_eventList instead?
         ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
         ListView customListView = findViewById(R.id.CalendarEventList);
         customListView.setAdapter(customListAdapter);
@@ -74,7 +78,6 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // TODO make temp event pull from list of real events based on position
                         CalendarEvent tempEvent = m_eventList.get(position);
                         String eventAsJson = tempEvent.toJson();
                         Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
