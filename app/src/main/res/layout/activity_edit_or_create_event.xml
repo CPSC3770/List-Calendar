@@ -9,207 +9,186 @@
 
     <TextView
         android:id="@+id/eventTitleLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
         android:layout_marginEnd="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Title"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/eventTitle"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Title:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />/>
 
     <EditText
         android:id="@+id/eventTitle"
-        android:layout_width="164dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
-        android:layout_marginEnd="117dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/selectFromDate"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:singleLine="true"
+        android:textColor="@android:color/background_dark"
+        android:textColorHighlight="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textColorLink="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/eventTitleLabel"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/eventTitleLabel" />
 
     <TextView
         android:id="@+id/eventLocationLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:text="Location"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/eventLocation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
+        android:layout_width="88dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="14dp"
+        android:text="Location:"
+        app:layout_constraintStart_toStartOf="@+id/eventTitleLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventTitleLabel"/>
 
     <EditText
         android:id="@+id/eventLocation"
-        android:layout_width="195dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="86dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/eventLocationLabel"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:singleLine="true"
+        android:textColor="@android:color/background_dark"
+        android:textColorHighlight="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textColorLink="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/eventLocationLabel"
-        app:layout_constraintTop_toBottomOf="@+id/eventLocationLabel" />
+        app:layout_constraintTop_toTopOf="@+id/eventLocationLabel" />
+
+    <Button
+        android:id="@+id/selectFromDate"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textSize="8sp"
+        android:layout_marginTop="16dp"
+        android:text="From Date:"
+        app:layout_constraintStart_toStartOf="@+id/eventLocationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocationLabel"/>
+
+    <TextView
+        android:id="@+id/viewFromDate"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectFromDate"
+        app:layout_constraintTop_toTopOf="@+id/selectFromDate"/>
+
+    <Button
+        android:id="@+id/selectFromTime"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textSize="8sp"
+        android:layout_marginTop="3dp"
+        android:text="From Time:"
+        app:layout_constraintStart_toStartOf="@+id/selectFromDate"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromDate" />
+
+    <TextView
+        android:id="@+id/viewFromTime"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectFromTime"
+        app:layout_constraintTop_toTopOf="@+id/selectFromTime" />
+
+    <Button
+        android:id="@+id/selectToDate"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textSize="8sp"
+        android:layout_marginTop="3dp"
+        android:text="To Date:"
+        app:layout_constraintStart_toStartOf="@+id/selectFromTime"
+        app:layout_constraintTop_toBottomOf="@+id/selectFromTime" />
+
+    <TextView
+        android:id="@+id/viewToDate"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="left|center"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectToDate"
+        app:layout_constraintTop_toTopOf="@+id/selectToDate" />
+
+    <Button
+        android:id="@+id/selectToTime"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textSize="8sp"
+        android:layout_marginTop="3dp"
+        android:text="To Time:"
+        app:layout_constraintStart_toStartOf="@+id/selectToDate"
+        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
+
+    <TextView
+        android:id="@+id/viewToTime"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        android:text="Unspecified"
+        app:layout_constraintStart_toEndOf="@+id/selectToTime"
+        app:layout_constraintTop_toTopOf="@+id/selectToTime" />
+
+    <TextView
+        android:id="@+id/colorLabel"
+        android:layout_width="80dp"
+        android:layout_height="26dp"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:gravity="left|center"
+        android:text="Color:"
+        app:layout_constraintStart_toStartOf="@+id/selectToTime"
+        app:layout_constraintTop_toBottomOf="@+id/selectToTime" />
+
+    <Spinner
+        android:id="@+id/color_spinner"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/colorLabel"
+        app:layout_constraintTop_toTopOf="@+id/colorLabel" />
 
     <Button
         android:id="@+id/submitEventChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Save"
-        app:layout_constraintBaseline_toBaselineOf="@+id/cancelEventChanges"
-        app:layout_constraintEnd_toStartOf="@+id/cancelEventChanges"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
         android:id="@+id/cancelEventChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="14dp"
         android:text="Cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/submitEventChanges"
-        app:layout_constraintTop_toBottomOf="@+id/colorLabel" />
-
-    <Button
-        android:id="@+id/selectFromDate"
-        android:layout_width="101dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="32dp"
-        android:text="From Date"
-        app:layout_constraintBottom_toTopOf="@+id/selectFromTime"
-        app:layout_constraintEnd_toStartOf="@+id/viewFromDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
-
-    <TextView
-        android:id="@+id/viewFromDate"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="139dp"
-        android:gravity="left|center"
-        android:text="Unspecified"
-        app:layout_constraintBottom_toTopOf="@+id/viewFromTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectFromDate"
-        app:layout_constraintTop_toTopOf="@+id/selectFromDate" />
-
-    <Button
-        android:id="@+id/selectFromTime"
-        android:layout_width="99dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="32dp"
-        android:text="From Time"
-        app:layout_constraintBottom_toTopOf="@+id/selectToDate"
-        app:layout_constraintEnd_toStartOf="@+id/viewFromTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectFromDate" />
-
-    <TextView
-        android:id="@+id/viewFromTime"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginTop="48dp"
-        android:gravity="left|center"
-        android:text="Unspecified"
-        app:layout_constraintBottom_toBottomOf="@+id/viewToDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectFromTime"
-        app:layout_constraintTop_toTopOf="@+id/selectFromDate" />
-
-    <Button
-        android:id="@+id/selectToDate"
-        android:layout_width="99dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="32dp"
-        android:text="To Date"
-        app:layout_constraintBottom_toTopOf="@+id/selectToTime"
-        app:layout_constraintEnd_toStartOf="@+id/viewToDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectFromTime" />
-
-    <TextView
-        android:id="@+id/viewToDate"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginTop="48dp"
-        android:gravity="left|center"
-        android:text="Unspecified"
-        app:layout_constraintBottom_toBottomOf="@+id/viewToTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectToDate"
-        app:layout_constraintTop_toTopOf="@+id/selectFromTime" />
-
-    <Button
-        android:id="@+id/selectToTime"
-        android:layout_width="99dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="32dp"
-        android:text="To Time"
-        app:layout_constraintBottom_toTopOf="@+id/colorLabel"
-        app:layout_constraintEnd_toStartOf="@+id/viewToTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
-
-    <TextView
-        android:id="@+id/viewToTime"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="139dp"
-        android:gravity="left|center"
-        android:text="Unspecified"
-        app:layout_constraintBottom_toBottomOf="@+id/selectToTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/selectToTime"
-        app:layout_constraintTop_toBottomOf="@+id/selectToDate" />
-
-    <Spinner
-        android:id="@+id/colorSpinner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="251dp"
-        app:layout_constraintBottom_toBottomOf="@+id/colorLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/colorLabel"
-        app:layout_constraintTop_toTopOf="@+id/colorLabel" />
-
-    <TextView
-        android:id="@+id/colorLabel"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="66dp"
-        android:layout_marginStart="32dp"
-        android:gravity="center"
-        android:text="Color"
-        app:layout_constraintBottom_toTopOf="@+id/cancelEventChanges"
-        app:layout_constraintEnd_toStartOf="@+id/colorSpinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectToTime" />
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/eventTitle"
-        app:layout_constraintGuide_begin="156dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintGuide_begin="192dp" />
 
 </android.support.constraint.ConstraintLayout>
