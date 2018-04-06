@@ -30,8 +30,13 @@ public class ViewCalendarActivity extends AppCompatActivity {
             CalendarEventList savedCalendarEventList = CalendarEventList.fromJson(calendarEventListAsJson);
             this.m_eventList = savedCalendarEventList.viewEventList();
         }else{
-            this.m_eventList = new ArrayList<CalendarEvent>();
+            this.m_eventList = new ArrayList<>();
         }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
 
         // Receive event, catch is for fresh launch or cancel on next window
         Bundle bundle = getIntent().getExtras();
@@ -59,14 +64,16 @@ public class ViewCalendarActivity extends AppCompatActivity {
         }
 
         // TODO : remove this temp
-        String[] tempEvents = {};
+        String[] tempEvents;
         if(this.m_eventList.size() != 0){
             tempEvents = new String[this.m_eventList.size()];
             for(int i = 0; i < this.m_eventList.size(); i++){
                 tempEvents[i] = this.m_eventList.get(i).viewTitle();
             }
         }else{
-            tempEvents = new String[] {"First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"};
+            tempEvents = new String[] {"Don't click 1", "Don't click 2", "Don't click 3",
+                    "Don't click 4", "Don't click 5", "Don't click 6", "Don't click 7",
+                    "Don't click 8", "Don't click 9"};
         }
 
         // TODO make this work with m_eventList instead?
@@ -119,5 +126,11 @@ public class ViewCalendarActivity extends AppCompatActivity {
         outState.putString(KEY_EVENT_LIST, eventListToBeSavedAsJson);
 
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 }

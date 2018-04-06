@@ -24,7 +24,6 @@ public class ViewEventActivity extends AppCompatActivity {
         String calendarEventAsJson = bundle.getString("event");
         m_event = CalendarEvent.fromJson(calendarEventAsJson);
 
-
         // Set views
         TextView fromDateView = findViewById(R.id.viewFromDate);
         fromDateView.setText(m_event.viewFromDateAsString());
@@ -156,6 +155,7 @@ public class ViewEventActivity extends AppCompatActivity {
                 String eventAsJson = m_event.toJson();
                 Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
                 intent.putExtra("event", eventAsJson);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
         });
@@ -166,6 +166,7 @@ public class ViewEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewEventActivity.this, ViewCalendarActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
             }
         });
