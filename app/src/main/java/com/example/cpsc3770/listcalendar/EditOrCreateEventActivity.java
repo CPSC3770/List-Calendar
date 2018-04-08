@@ -189,6 +189,7 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ColorItem clickedItem = (ColorItem) adapterView.getItemAtPosition(i);
+                m_event.setColor(clickedItem);
             }
 
             @Override
@@ -209,6 +210,5 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
         m_ColorList.add(new ColorItem("Purple", R.drawable.purple));
         m_ColorList.add(new ColorItem("Pink",   R.drawable.pink));
         m_ColorList.add(new ColorItem("Grey",   R.drawable.grey));
-
     }
 }

@@ -26,7 +26,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     private int m_toHour = -1;
     private int m_toMinute = -1;
     private boolean m_toTimeBeingSet = false;
-    private int m_color = -1; // find some library for this?
+    private ColorItem m_color = new ColorItem("Grey",   R.drawable.grey);
     private int m_uuid = counter++;
 
     public String viewTitle(){
@@ -238,7 +238,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
         }
     }
 
-    public int viewColor(){
+    public ColorItem viewColor(){
         return this.m_color;
     }
 
@@ -246,7 +246,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
         return this.m_uuid;
     }
 
-    public void setColor(int color){
+    public void setColor(ColorItem color){
         this.m_color = color;
     }
 

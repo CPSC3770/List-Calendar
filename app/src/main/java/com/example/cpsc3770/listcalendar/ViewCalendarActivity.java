@@ -18,8 +18,9 @@ import java.util.Collections;
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
     List<CalendarEvent> m_eventList;
-    String[] Descrip;
-    String[] Times;
+    private String[] Descrip;
+    private String[] Times;
+    private int[] Colors;
 
     private static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
 
@@ -70,13 +71,16 @@ public class ViewCalendarActivity extends AppCompatActivity {
         if(this.m_eventList.size() != 0){
             //-- if there are events, populate them and make them intractable
             Descrip = new String[this.m_eventList.size()];
-            Times = new String[this.m_eventList.size()];
+            Times   = new String[this.m_eventList.size()];
+            Colors  = new int[this.m_eventList.size()];
+
             for(int i = 0; i < this.m_eventList.size(); i++){
                 Descrip[i] = this.m_eventList.get(i).viewTitle();
-                Times[i] = this.m_eventList.get(i).viewTimeAsString();
+                Times[i]   = this.m_eventList.get(i).viewTimeAsString();
+                Colors[i]  = this.m_eventList.get(i).viewColor().getColorImg();
             }
 
-            ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times);
+            ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors);
             ListView customListView = findViewById(R.id.CalendarEventList);
             customListView.setAdapter(customListAdapter);
 

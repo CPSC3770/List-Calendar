@@ -10,10 +10,13 @@ import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
-    String[] tempList;
-    public CustomAdapter(Context context, String[] inputList, String[] inputTime) {
+    private String[] tempList;
+    private int[] tempColor;
+
+    public CustomAdapter(Context context, String[] inputList, String[] inputTime, int[] inputColor) {
         super(context, R.layout.custom_list_adapter, inputList);
         tempList = inputTime;
+        tempColor = inputColor;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
 
         itemText.setText(singleEvent);
         itemTime.setText(tempList[position]);
-        calendarImage.setImageResource(R.drawable.placeholder);
+        calendarImage.setImageResource(tempColor[position]);
 
         return customView;
     }
