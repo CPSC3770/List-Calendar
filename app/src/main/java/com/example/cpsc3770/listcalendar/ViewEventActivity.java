@@ -77,5 +77,7 @@ public class ViewEventActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //-- TODO: change color reference
     }
 }

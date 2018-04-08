@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -44,6 +45,10 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
 
         TextView toTimeView = findViewById(R.id.viewToTime);
         toTimeView.setText(this.m_event.viewToTimeAsString());
+
+        //-- TODO: make this populate previous value on edit
+        final ImageView imageColor = findViewById(R.id.color_view);
+        imageColor.setImageResource(this.m_event.viewColor().getColorImg());
 
         // "Title" edit text listener
         EditText titleField = findViewById(R.id.eventTitle);
@@ -190,6 +195,7 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ColorItem clickedItem = (ColorItem) adapterView.getItemAtPosition(i);
                 m_event.setColor(clickedItem);
+                imageColor.setImageResource(clickedItem.getColorImg());
             }
 
             @Override
@@ -197,6 +203,8 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 

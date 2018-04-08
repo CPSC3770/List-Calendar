@@ -165,4 +165,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="192dp" />
 
+    <ImageView
+        android:id="@+id/color_view"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/red"
+        app:layout_constraintStart_toStartOf="@+id/colorLabel"
+        app:layout_constraintTop_toBottomOf="@+id/colorLabel" />
+
 </android.support.constraint.ConstraintLayout>

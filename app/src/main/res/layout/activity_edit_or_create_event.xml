@@ -149,20 +149,20 @@
     <TextView
         android:id="@+id/colorLabel"
         android:layout_width="80dp"
-        android:layout_height="26dp"
-        android:textSize="20sp"
+        android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:gravity="left|center"
         android:text="Color:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/selectToTime"
         app:layout_constraintTop_toBottomOf="@+id/selectToTime" />
 
     <Spinner
         android:id="@+id/color_spinner"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toEndOf="@+id/colorLabel"
         app:layout_constraintTop_toTopOf="@+id/colorLabel" />
 
@@ -190,5 +190,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="192dp" />
+
+    <ImageView
+        android:id="@+id/color_view"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/red"
+        app:layout_constraintStart_toStartOf="@+id/colorLabel"
+        app:layout_constraintTop_toBottomOf="@+id/colorLabel" />
 
 </android.support.constraint.ConstraintLayout>
