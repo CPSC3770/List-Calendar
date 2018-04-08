@@ -218,6 +218,26 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
         }
     }
 
+    public String viewTimeAsString() {
+        if(this.hasToTime()&& this.hasFromTime()) {
+            return String.format("%02d", this.m_fromMinute) + ":" +
+                    String.format("%02d", this.m_fromMinute) + " - " +
+                    String.format("%02d", this.m_toHour) + ":" +
+                    String.format("%02d", this.m_toHour);
+        } else if (this.hasToTime()) {
+            return CalendarEvent.unspecifiedTimeString() + " - " +
+                    String.format("%02d", this.m_toHour) + ":" +
+                    String.format("%02d", this.m_toHour);
+        } else if (this.hasFromTime()) {
+            return String.format("%02d", this.m_fromMinute) + ":" +
+                    String.format("%02d", this.m_fromMinute) + " - " +
+                    CalendarEvent.unspecifiedTimeString();
+        } else {
+            return CalendarEvent.unspecifiedTimeString() + " - " +
+                    CalendarEvent.unspecifiedTimeString();
+        }
+    }
+
     public int viewColor(){
         return this.m_color;
     }

@@ -17,6 +17,9 @@ import java.util.Collections;
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
     List<CalendarEvent> m_eventList;
+    String[] Descrip;
+    String[] Times;
+
     private static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
 
     @Override
@@ -63,21 +66,24 @@ public class ViewCalendarActivity extends AppCompatActivity {
             // Do nothing
         }
 
-        // TODO : remove this temp
-        String[] tempEvents;
+
         if(this.m_eventList.size() != 0){
-            tempEvents = new String[this.m_eventList.size()];
+            Descrip = new String[this.m_eventList.size()];
+            Times = new String[this.m_eventList.size()];
             for(int i = 0; i < this.m_eventList.size(); i++){
-                tempEvents[i] = this.m_eventList.get(i).viewTitle();
+                Descrip[i] = this.m_eventList.get(i).viewTitle();
+                Times[i] = this.m_eventList.get(i).viewTimeAsString();
             }
         }else{
-            tempEvents = new String[] {"Don't click 1", "Don't click 2", "Don't click 3",
+            //-- TODO: replace this with a single item list that says click button for new event
+            Descrip = new String[] {"Don't click 1", "Don't click 2", "Don't click 3",
                     "Don't click 4", "Don't click 5", "Don't click 6", "Don't click 7",
                     "Don't click 8", "Don't click 9"};
+            Times = new String[] {"1-1", "1-2", "1-3", "2-4", "3-5", "3-6", "3-7", "4-8", "5-9"};
         }
 
         // TODO make this work with m_eventList instead?
-        ListAdapter customListAdapter = new CustomAdapter(this, tempEvents);
+        ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times);
         ListView customListView = findViewById(R.id.CalendarEventList);
         customListView.setAdapter(customListAdapter);
 

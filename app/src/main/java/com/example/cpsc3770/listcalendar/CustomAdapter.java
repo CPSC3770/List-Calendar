@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
-    public CustomAdapter(Context context, String[] inputList) {
+    String[] tempList;
+    public CustomAdapter(Context context, String[] inputList, String[] inputTime) {
         super(context, R.layout.custom_list_adapter, inputList);
+        tempList = inputTime;
     }
 
     @Override
@@ -23,10 +25,12 @@ public class CustomAdapter extends ArrayAdapter<String> {
         // get references.
         String singleEvent = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.calendarListTitle);
+        TextView itemTime = (TextView) customView.findViewById(R.id.calendarListTitle2);
         ImageView calendarImage = (ImageView) customView.findViewById(R.id.calendarListImage);
 
 
         itemText.setText(singleEvent);
+        itemTime.setText(tempList[position]);
         calendarImage.setImageResource(R.drawable.placeholder);
 
         return customView;
