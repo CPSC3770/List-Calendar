@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,6 @@ public class ViewCalendarActivity extends AppCompatActivity {
             // Do nothing
         }
 
-
         if(this.m_eventList.size() != 0){
             Descrip = new String[this.m_eventList.size()];
             Times = new String[this.m_eventList.size()];
@@ -74,31 +74,29 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 Descrip[i] = this.m_eventList.get(i).viewTitle();
                 Times[i] = this.m_eventList.get(i).viewTimeAsString();
             }
-        }else{
-            //-- TODO: replace this with a single item list that says click button for new event
-            Descrip = new String[] {"Don't click 1", "Don't click 2", "Don't click 3",
-                    "Don't click 4", "Don't click 5", "Don't click 6", "Don't click 7",
-                    "Don't click 8", "Don't click 9"};
-            Times = new String[] {"1-1", "1-2", "1-3", "2-4", "3-5", "3-6", "3-7", "4-8", "5-9"};
-        }
 
-        // TODO make this work with m_eventList instead?
-        ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times);
-        ListView customListView = findViewById(R.id.CalendarEventList);
-        customListView.setAdapter(customListAdapter);
+            ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times);
+            ListView customListView = findViewById(R.id.CalendarEventList);
+            customListView.setAdapter(customListAdapter);
 
-        customListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        CalendarEvent tempEvent = m_eventList.get(position);
-                        String eventAsJson = tempEvent.toJson();
-                        Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
-                        intent.putExtra("event", eventAsJson);
-                        startActivity(intent);
+            customListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            CalendarEvent tempEvent = m_eventList.get(position);
+                            String eventAsJson = tempEvent.toJson();
+                            Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                            intent.putExtra("event", eventAsJson);
+                            startActivity(intent);
+                        }
                     }
-                }
-        );
+            );
+        } else {
+
+            ListView customListView = findViewById(R.id.CalendarEventList);
+            customListView.setEmptyView(findViewById(R.id.emptyList));
+
+        }
 
 
         // "+" Floating Action Button listener (Behaves as "Add New Event"
