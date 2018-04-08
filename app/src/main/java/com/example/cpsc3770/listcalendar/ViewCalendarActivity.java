@@ -68,6 +68,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
         }
 
         if(this.m_eventList.size() != 0){
+            //-- if there are events, populate them and make them intractable
             Descrip = new String[this.m_eventList.size()];
             Times = new String[this.m_eventList.size()];
             for(int i = 0; i < this.m_eventList.size(); i++){
@@ -92,10 +93,9 @@ public class ViewCalendarActivity extends AppCompatActivity {
                     }
             );
         } else {
-
+            //-- display a message when empty
             ListView customListView = findViewById(R.id.CalendarEventList);
             customListView.setEmptyView(findViewById(R.id.emptyList));
-
         }
 
 

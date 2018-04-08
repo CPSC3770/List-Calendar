@@ -6,14 +6,21 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class EditOrCreateEventActivity extends AppCompatActivity {
     // Member variables
     private CalendarEvent m_event;
     private boolean m_originIsView = false;
+    private ArrayList<ColorItem> m_ColorList;
+    private CustomSpinnerAdapter m_Adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,5 +178,37 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //-- color spinner
+        initList();
+
+        Spinner spinnerColor = findViewById(R.id.color_spinner);
+        m_Adapter = new CustomSpinnerAdapter(this, m_ColorList);
+        spinnerColor.setAdapter(m_Adapter);
+        spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ColorItem clickedItem = (ColorItem) adapterView.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
+
+    private void initList() {
+        m_ColorList = new ArrayList<>();
+        m_ColorList.add(new ColorItem("Red",    R.drawable.red));
+        m_ColorList.add(new ColorItem("Blue",   R.drawable.blue));
+        m_ColorList.add(new ColorItem("Green",  R.drawable.green));
+        m_ColorList.add(new ColorItem("Yellow", R.drawable.yellow));
+        m_ColorList.add(new ColorItem("Purple", R.drawable.purple));
+        m_ColorList.add(new ColorItem("Pink",   R.drawable.pink));
+        m_ColorList.add(new ColorItem("Grey",   R.drawable.grey));
+
     }
 }
