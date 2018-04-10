@@ -34,6 +34,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
             String calendarEventListAsJson = savedInstanceState.getString(KEY_EVENT_LIST);
             CalendarEventList savedCalendarEventList = CalendarEventList.fromJson(calendarEventListAsJson);
             this.m_eventList = savedCalendarEventList.viewEventList();
+            Collections.sort(this.m_eventList);
         }else{
             this.m_eventList = new ArrayList<>();
         }
@@ -64,20 +65,27 @@ public class ViewCalendarActivity extends AppCompatActivity {
             }
 
             Collections.sort(this.m_eventList);
+
         } catch (java.lang.NullPointerException e){
             // Do nothing
         }
 
         if(this.m_eventList.size() != 0){
+
+            //-- sort the events
+            Collections.sort(this.m_eventList);
+
             //-- if there are events, populate them and make them intractable
             Descrip = new String[this.m_eventList.size()];
             Times   = new String[this.m_eventList.size()];
             Colors  = new int[this.m_eventList.size()];
 
             for(int i = 0; i < this.m_eventList.size(); i++){
+
                 Descrip[i] = this.m_eventList.get(i).viewTitle();
                 Times[i]   = this.m_eventList.get(i).viewTimeAsString();
                 Colors[i]  = this.m_eventList.get(i).viewColor().getColorImg();
+
             }
 
             ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors);
