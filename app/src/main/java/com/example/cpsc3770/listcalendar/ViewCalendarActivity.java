@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,8 @@ public class ViewCalendarActivity extends AppCompatActivity {
 
         if(this.m_eventList.size() != 0){
 
+            Toast.makeText(this, Integer.toString(this.m_eventList.size()), Toast.LENGTH_SHORT).show();
+
             //-- sort the events
             Collections.sort(this.m_eventList);
 
@@ -90,7 +93,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 if (!LastDate.equals(this.m_eventList.get(i).viewFromDateAsString())) {
 
                     //-- Set expected values for the header
-                    Descrip[ittr] = this.m_eventList.get(i).viewFromDateAsString();
+                    Descrip[ittr] = this.m_eventList.get(i).getDateDisplay();
                     Times[ittr] = "NULL";
                     Colors[ittr] = -1;
                     Indexes[ittr] = -1; // make sure we know this index was a header
@@ -122,13 +125,15 @@ public class ViewCalendarActivity extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                             //-- check if this intent is a header
-                            if (Indexes[position] != -1) {
+                            //if (Indexes[position] != -1) {
+                            if (!Times[position].equals("NULL")) {
                                 CalendarEvent tempEvent = m_eventList.get(Indexes[position]);
                                 String eventAsJson = tempEvent.toJson();
                                 Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
                                 intent.putExtra("event", eventAsJson);
                                 startActivity(intent);
                             }
+
                         }
                     }
             );

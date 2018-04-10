@@ -29,6 +29,16 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     private ColorItem m_color = new ColorItem("Red",   R.drawable.red);
     private int m_uuid = counter++;
 
+    String[] MonthsOfYear = {"January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"};
+
+    public String getDateDisplay() {
+        return MonthsOfYear[this.m_fromMonth] + " " +
+                String.format("%02d", this.m_fromDay) + ", " +
+                String.valueOf(this.m_fromYear);
+    }
+
+
     public boolean hasTitle(){
         return !(this.m_title.equals(""));
     }
@@ -93,7 +103,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     public String viewFromDateAsString(){
         if(this.hasFromDate()){
             return String.valueOf(this.m_fromYear) + "/" +
-                    String.format("%02d", this.m_fromMonth) + "/" +
+                    String.format("%02d", this.m_fromMonth+1) + "/" +
                     String.format("%02d", this.m_fromDay);
         }else{
             return CalendarEvent.unspecifiedDateString();
@@ -179,7 +189,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     public String viewToDateAsString(){
         if(this.hasToDate()) {
             return String.valueOf(this.m_toYear) + "/" +
-                    String.format("%02d", this.m_toMonth) + "/" +
+                    String.format("%02d", this.m_toMonth+1) + "/" +
                     String.format("%02d", this.m_toDay);
         }else{
             return CalendarEvent.unspecifiedDateString();
