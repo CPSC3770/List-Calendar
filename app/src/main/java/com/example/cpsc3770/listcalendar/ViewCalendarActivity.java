@@ -21,6 +21,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
     private String[] Descrip;
     private String[] Times;
     private int[] Colors;
+    private int[] Indexes;
 
     private static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
 
@@ -76,34 +77,62 @@ public class ViewCalendarActivity extends AppCompatActivity {
             Collections.sort(this.m_eventList);
 
             //-- if there are events, populate them and make them intractable
-            Descrip = new String[this.m_eventList.size()];
-            Times   = new String[this.m_eventList.size()];
-            Colors  = new int[this.m_eventList.size()];
+            Descrip = new String[this.m_eventList.size()*2];
+            Times   = new String[this.m_eventList.size()*2];
+            Colors  = new int[this.m_eventList.size()*2];
+            Indexes = new int[this.m_eventList.size()*2];
+
+            String LastDate = " ";
+            int ittr = 0;
 
             for(int i = 0; i < this.m_eventList.size(); i++){
 
-                Descrip[i] = this.m_eventList.get(i).viewTitle();
-                Times[i]   = this.m_eventList.get(i).viewTimeAsString();
-                Colors[i]  = this.m_eventList.get(i).viewColor().getColorImg();
+                if (!LastDate.equals(this.m_eventList.get(i).viewFromDateAsString())) {
 
+                    //-- Set expected values for the header
+                    Descrip[ittr] = this.m_eventList.get(i).viewFromDateAsString();
+                    Times[ittr] = "NULL";
+                    Colors[ittr] = -1;
+                    Indexes[ittr] = -1; // make sure we know this index was a header
+
+                    //-- Grab the last date of a header
+                    LastDate = this.m_eventList.get(i).viewFromDateAsString();
+
+                    //-- Increase iterator to next position
+                    ittr++;
+                }
+
+                //-- set information about this position
+                Descrip[ittr] = this.m_eventList.get(i).viewTitle();
+                Times[ittr]   = this.m_eventList.get(i).viewTimeAsString();
+                Colors[ittr]  = this.m_eventList.get(i).viewColor().getColorImg();
+                Indexes[ittr] = i; // make sure we can find this index of m_eventList later
+
+                ittr++;
             }
 
             ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors);
             ListView customListView = findViewById(R.id.CalendarEventList);
             customListView.setAdapter(customListAdapter);
 
+
             customListView.setOnItemClickListener(
                     new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            CalendarEvent tempEvent = m_eventList.get(position);
-                            String eventAsJson = tempEvent.toJson();
-                            Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
-                            intent.putExtra("event", eventAsJson);
-                            startActivity(intent);
+
+                            //-- check if this intent is a header
+                            if (Indexes[position] != -1) {
+                                CalendarEvent tempEvent = m_eventList.get(Indexes[position]);
+                                String eventAsJson = tempEvent.toJson();
+                                Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
+                                intent.putExtra("event", eventAsJson);
+                                startActivity(intent);
+                            }
                         }
                     }
             );
+
         } else {
             //-- display a message when empty
             ListView customListView = findViewById(R.id.CalendarEventList);
