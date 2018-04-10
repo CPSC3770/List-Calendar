@@ -24,6 +24,40 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
     private ArrayList<ColorItem> m_ColorList;
     private CustomSpinnerAdapter m_Adapter;
 
+    private boolean allRequiredFieldsSet(){
+        if(!this.m_event.hasTitle()){
+            Toast.makeText(getApplicationContext(),"Title Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(!this.m_event.hasLocation()){
+            Toast.makeText(getApplicationContext(),"Location Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(!this.m_event.hasFromDate()){
+            Toast.makeText(getApplicationContext(),"From Date Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(!this.m_event.hasFromTime()){
+            Toast.makeText(getApplicationContext(),"From Time Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(!this.m_event.hasToDate()){
+            Toast.makeText(getApplicationContext(),"To Date Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if(!this.m_event.hasToTime()){
+            Toast.makeText(getApplicationContext(),"To Time Required",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,11 +196,13 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
         submitEventChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String eventAsJson = m_event.toJson();
-                Intent intent = new Intent(EditOrCreateEventActivity.this, ViewCalendarActivity.class);
-                intent.putExtra("event", eventAsJson);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                if(allRequiredFieldsSet()) {
+                    String eventAsJson = m_event.toJson();
+                    Intent intent = new Intent(EditOrCreateEventActivity.this, ViewCalendarActivity.class);
+                    intent.putExtra("event", eventAsJson);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -205,7 +241,6 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
                 imageColor.setImageResource(m_event.viewColor().getColorImg());
             }
         });
-
 
 
     }
