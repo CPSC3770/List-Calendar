@@ -29,12 +29,20 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     private ColorItem m_color = new ColorItem("Red",   R.drawable.red);
     private int m_uuid = counter++;
 
+    public boolean hasTitle(){
+        return this.m_title != "";
+    }
+
     public String viewTitle(){
         return this.m_title;
     }
 
     public void setTitle(String title){
         this.m_title = title;
+    }
+
+    public boolean hasLocation(){
+        return this.m_location != "";
     }
 
     public String viewLocation(){
