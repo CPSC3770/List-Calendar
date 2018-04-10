@@ -30,7 +30,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     private int m_uuid = counter++;
 
     public boolean hasTitle(){
-        return this.m_title != "";
+        return this.m_title.equals("");
     }
 
     public String viewTitle(){
@@ -42,7 +42,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     }
 
     public boolean hasLocation(){
-        return this.m_location != "";
+        return this.m_location.equals("");
     }
 
     public String viewLocation(){
