@@ -227,23 +227,7 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     }
 
     public String viewTimeAsString() {
-        if(this.hasToTime()&& this.hasFromTime()) {
-            return String.format("%02d", this.m_fromMinute) + ":" +
-                    String.format("%02d", this.m_fromMinute) + " - " +
-                    String.format("%02d", this.m_toHour) + ":" +
-                    String.format("%02d", this.m_toHour);
-        } else if (this.hasToTime()) {
-            return CalendarEvent.unspecifiedTimeString() + " - " +
-                    String.format("%02d", this.m_toHour) + ":" +
-                    String.format("%02d", this.m_toHour);
-        } else if (this.hasFromTime()) {
-            return String.format("%02d", this.m_fromMinute) + ":" +
-                    String.format("%02d", this.m_fromMinute) + " - " +
-                    CalendarEvent.unspecifiedTimeString();
-        } else {
-            return CalendarEvent.unspecifiedTimeString() + " - " +
-                    CalendarEvent.unspecifiedTimeString();
-        }
+        return viewFromTimeAsString() + " - " + viewToTimeAsString();
     }
 
     public ColorItem viewColor(){
@@ -285,35 +269,37 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
 
     @Override
     public int compareTo(CalendarEvent rhs) {
+
+        
         if(this.viewFromYear() != rhs.viewFromYear()){
-            Integer.compare(this.viewFromYear(), rhs.viewFromYear());
+            return Integer.compare(this.viewFromYear(), rhs.viewFromYear());
         }else{
             if(this.viewFromMonth() != rhs.viewFromMonth()){
-                Integer.compare(this.viewFromMonth(), rhs.viewFromMonth());
+                return Integer.compare(this.viewFromMonth(), rhs.viewFromMonth());
             }else{
                 if(this.viewFromDay() != rhs.viewFromDay()){
-                    Integer.compare(this.viewFromDay(), rhs.viewFromDay());
+                    return Integer.compare(this.viewFromDay(), rhs.viewFromDay());
                 }else{
                     if(this.viewFromHour() != rhs.viewFromHour()){
-                        Integer.compare(this.viewFromHour(), rhs.viewFromHour());
+                        return Integer.compare(this.viewFromHour(), rhs.viewFromHour());
                     }else{
                         if(this.viewFromMinute() != rhs.viewFromMinute()){
-                            Integer.compare(this.viewFromMinute(), rhs.viewFromMinute());
+                            return Integer.compare(this.viewFromMinute(), rhs.viewFromMinute());
                         }else{
                             if(this.viewToYear() != rhs.viewToYear())                            {
-                                Integer.compare(this.viewToYear(), rhs.viewToYear());
+                                return Integer.compare(this.viewToYear(), rhs.viewToYear());
                             }else{
                                 if(this.viewToMonth() != rhs.viewToMonth()){
-                                    Integer.compare(this.viewToMonth(), rhs.viewToMonth());
+                                    return Integer.compare(this.viewToMonth(), rhs.viewToMonth());
                                 }else{
                                     if(this.viewToDay() != rhs.viewToDay()){
-                                        Integer.compare(this.viewToDay(), rhs.viewToDay());
+                                        return Integer.compare(this.viewToDay(), rhs.viewToDay());
                                     }else{
                                         if(this.viewToHour() != rhs.viewToHour()){
-                                            Integer.compare(this.viewToHour(), rhs.viewToHour());
+                                            return Integer.compare(this.viewToHour(), rhs.viewToHour());
                                         }else{
                                             if(this.viewToMinute() != rhs.viewToMinute()){
-                                                Integer.compare(this.viewToMinute(), rhs.viewToMinute());
+                                                return Integer.compare(this.viewToMinute(), rhs.viewToMinute());
                                             }
                                         }
                                     }
