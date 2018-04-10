@@ -270,7 +270,6 @@ class CalendarEvent implements Comparable<CalendarEvent>  {
     @Override
     public int compareTo(CalendarEvent rhs) {
 
-        
         if(this.viewFromYear() != rhs.viewFromYear()){
             return Integer.compare(this.viewFromYear(), rhs.viewFromYear());
         }else{
