@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,10 +46,6 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
 
         TextView toTimeView = findViewById(R.id.viewToTime);
         toTimeView.setText(this.m_event.viewToTimeAsString());
-
-        //-- TODO: make this populate previous value on edit
-        final ImageView imageColor = findViewById(R.id.color_view);
-        imageColor.setImageResource(this.m_event.viewColor().getColorImg());
 
         // "Title" edit text listener
         EditText titleField = findViewById(R.id.eventTitle);
@@ -187,9 +184,14 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
         //-- color spinner
         initList();
 
+        final ImageView imageColor = findViewById(R.id.color_view);
+        imageColor.setImageResource(m_event.viewColor().getColorImg());
+
         Spinner spinnerColor = findViewById(R.id.color_spinner);
         m_Adapter = new CustomSpinnerAdapter(this, m_ColorList);
         spinnerColor.setAdapter(m_Adapter);
+        spinnerColor.setSelection(getColorIndex(m_event.viewColor().getColorImg()));
+
         spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -200,7 +202,7 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                imageColor.setImageResource(m_event.viewColor().getColorImg());
             }
         });
 
@@ -218,5 +220,14 @@ public class EditOrCreateEventActivity extends AppCompatActivity {
         m_ColorList.add(new ColorItem("Purple", R.drawable.purple));
         m_ColorList.add(new ColorItem("Pink",   R.drawable.pink));
         m_ColorList.add(new ColorItem("Grey",   R.drawable.grey));
+    }
+
+    private int getColorIndex(int currentColor) {
+        for (int i = 0; i < m_ColorList.size(); i++) {
+            if (m_ColorList.get(i).getColorImg() == currentColor) {
+                return i;
+            }
+        }
+        return 0;
     }
 }

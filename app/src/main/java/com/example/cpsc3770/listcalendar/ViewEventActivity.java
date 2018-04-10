@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ViewEventActivity extends AppCompatActivity {
@@ -45,6 +46,9 @@ public class ViewEventActivity extends AppCompatActivity {
         TextView toTimeView = findViewById(R.id.viewToTime);
         toTimeView.setText(this.m_event.viewToTimeAsString());
 
+        final ImageView imageColor = findViewById(R.id.color_view);
+        imageColor.setImageResource(this.m_event.viewColor().getColorImg());
+
         // "Title" edit text listener
         TextView titleField = findViewById(R.id.eventTitle);
         titleField.setText(m_event.viewTitle());
@@ -78,6 +82,5 @@ public class ViewEventActivity extends AppCompatActivity {
             }
         });
 
-        //-- TODO: change color reference
     }
 }
