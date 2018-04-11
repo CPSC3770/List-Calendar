@@ -19,12 +19,15 @@ import java.util.Collections;
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
     List<CalendarEvent> m_eventList;
+    List<Integer> m_colors;
     private String[] Descrip;
     private String[] Times;
     private int[] Colors;
     private int[] Indexes;
 
-    private static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
+    public static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
+    public static final String KEY_COLOR_LIST = "KEY_COLOR_LIST";
+    private static final int NUM_COLORS = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,11 @@ public class ViewCalendarActivity extends AppCompatActivity {
             Collections.sort(this.m_eventList);
         }else{
             this.m_eventList = new ArrayList<>();
+        }
+
+        this.m_colors = new ArrayList<>();
+        for(int i = 0; i < NUM_COLORS; i++){
+            this.m_colors.add(i);
         }
     }
 
@@ -72,8 +80,15 @@ public class ViewCalendarActivity extends AppCompatActivity {
             // Do nothing
         }
 
-        if(this.m_eventList.size() != 0){
+        try{
+            String colorListAsJson = bundle.getString(KEY_COLOR_LIST);
+            ColorList receivedColorList = ColorList.fromJson(colorListAsJson);
+            this.m_colors = receivedColorList.viewColorList();
+        } catch (java.lang.NullPointerException e){
+            // Do nothing
+        }
 
+        if(this.m_eventList.size() != 0){
             Toast.makeText(this, Integer.toString(this.m_eventList.size()), Toast.LENGTH_SHORT).show();
 
             //-- sort the events
@@ -144,7 +159,6 @@ public class ViewCalendarActivity extends AppCompatActivity {
             customListView.setEmptyView(findViewById(R.id.emptyList));
         }
 
-
         // "+" Floating Action Button listener (Behaves as "Add New Event"
         FloatingActionButton AddNewEventButton = findViewById(R.id.AddNewEvent);
         AddNewEventButton.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +169,24 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewCalendarActivity.this, EditOrCreateEventActivity.class);
                 intent.putExtra("event", eventAsJson);
                 startActivity(intent);
+            }
+        });
+
+        // "Pencil" Floating Action Button listener (Behaves as "Color Filter"
+        FloatingActionButton ColorFilterButton = findViewById(R.id.ChangeColorFilter);
+        ColorFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(m_eventList.size() == 0){
+                    Toast.makeText(getApplicationContext(),"At least one event must be added before filters can be applied",Toast.LENGTH_SHORT).show();
+                }else{
+                    ColorList colorListToBeSent = new ColorList();
+                    colorListToBeSent.setColorList(m_colors);
+                    Intent intent = new Intent(ViewCalendarActivity.this, ColorFilterActivity.class);
+                    String colorListAsJson = colorListToBeSent.toJson();
+                    intent.putExtra(KEY_COLOR_LIST, colorListAsJson);
+                    startActivity(intent);
+                }
             }
         });
     }

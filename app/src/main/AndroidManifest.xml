@@ -23,7 +23,8 @@
         <activity android:name=".ViewOrEditCalendarEventActivity" />
         <activity android:name=".SetTimeActivity" />
         <activity android:name=".SetDateActivity" />
-        <activity android:name=".ViewEventActivity"></activity>
+        <activity android:name=".ViewEventActivity" />
+        <activity android:name=".ColorFilterActivity"></activity>
     </application>
 
 </manifest>
