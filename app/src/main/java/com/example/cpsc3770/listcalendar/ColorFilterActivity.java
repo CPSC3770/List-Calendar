@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -90,10 +91,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         redCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (redCheckBox.isChecked()) {
+                if (!redCheckBox.isChecked()) {
                     m_colors.remove("Red");
+                    Toast.makeText(getApplicationContext(),"Red Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Red");
+                    Toast.makeText(getApplicationContext(),"Red Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -101,10 +104,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         blueCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (blueCheckBox.isChecked()) {
+                if (!blueCheckBox.isChecked()) {
                     m_colors.remove("Blue");
+                    Toast.makeText(getApplicationContext(),"Blue Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Blue");
+                    Toast.makeText(getApplicationContext(),"Blue Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,10 +117,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         greenCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (greenCheckBox.isChecked()) {
+                if (!greenCheckBox.isChecked()) {
                     m_colors.remove("Green");
+                    Toast.makeText(getApplicationContext(),"Green Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Green");
+                    Toast.makeText(getApplicationContext(),"Green Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -123,10 +130,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         yellowCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (yellowCheckBox.isChecked()) {
+                if (!yellowCheckBox.isChecked()) {
                     m_colors.remove("Yellow");
+                    Toast.makeText(getApplicationContext(),"Yellow Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Yellow");
+                    Toast.makeText(getApplicationContext(),"Yellow Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -134,10 +143,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         purpleCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (purpleCheckBox.isChecked()) {
+                if (!purpleCheckBox.isChecked()) {
                     m_colors.remove("Purple");
+                    Toast.makeText(getApplicationContext(),"Purple Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Purple");
+                    Toast.makeText(getApplicationContext(),"Purple Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -145,10 +156,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         pinkCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pinkCheckBox.isChecked()) {
+                if (!pinkCheckBox.isChecked()) {
                     m_colors.remove("Pink");
+                    Toast.makeText(getApplicationContext(),"Pink Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Pink");
+                    Toast.makeText(getApplicationContext(),"Pink Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -156,10 +169,12 @@ public class ColorFilterActivity extends AppCompatActivity {
         greyCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (greyCheckBox.isChecked()) {
+                if (!greyCheckBox.isChecked()) {
                     m_colors.remove("Grey");
+                    Toast.makeText(getApplicationContext(),"Grey Events Hidden",Toast.LENGTH_SHORT).show();
                 } else {
                     m_colors.add("Grey");
+                    Toast.makeText(getApplicationContext(),"Grey Events Visible",Toast.LENGTH_SHORT).show();
                 }
             }
         });

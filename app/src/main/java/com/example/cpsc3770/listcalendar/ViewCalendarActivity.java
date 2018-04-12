@@ -94,6 +94,8 @@ public class ViewCalendarActivity extends AppCompatActivity {
 
         if(this.m_eventList.size() != 0){
 
+            TextView hiddenList = findViewById(R.id.hiddenList);
+
             //-- sort the events
             Collections.sort(this.m_eventList);
 
@@ -144,6 +146,8 @@ public class ViewCalendarActivity extends AppCompatActivity {
             }
 
             //Toast.makeText(this, Integer.toString(ittr), Toast.LENGTH_SHORT).show();
+            hiddenList.setVisibility(View.GONE);
+
 
             ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors, ittr);
             ListView customListView = findViewById(R.id.CalendarEventList);
@@ -171,9 +175,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
             //-- if no events were created
             if (ittr == 0) {
                 //-- display a message when empty
-                customListView = findViewById(R.id.CalendarEventList);
-                customListView.setEmptyView(findViewById(R.id.emptyList));
-                //-- TODO: Instead of showing "You Have no Events" Display "Events Exist, but are all filtered out. Unrestrict Filter or Press the + button to create a new one"
+                hiddenList.setVisibility(View.VISIBLE);
             }
 
         } else {

@@ -37,7 +37,19 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="You currently have no events.\n\n\nPress the + button\nto create a new one."
+        android:text="You currently have no events.\n\n\nPress the + button\nto create a new event."
+        android:textColor="#525252"
+        android:textSize="25.0sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/hiddenList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Events exist but are all\ncurrently hidden.\n\n\nPress the + button\nto create a new event,\nor enable some colors."
         android:textColor="#525252"
         android:textSize="25.0sp"
         android:visibility="gone" />
