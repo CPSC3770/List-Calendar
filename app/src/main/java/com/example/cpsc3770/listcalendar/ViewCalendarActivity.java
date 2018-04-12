@@ -44,6 +44,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
             this.m_eventList = new ArrayList<>();
         }
 
+        //-- Initialize the colors to display
         this.m_colors = new ArrayList<>();
         for(int i = 0; i < NUM_COLORS; i++){
             this.m_colors.add(i);
@@ -89,7 +90,6 @@ public class ViewCalendarActivity extends AppCompatActivity {
         }
 
         if(this.m_eventList.size() != 0){
-            Toast.makeText(this, Integer.toString(this.m_eventList.size()), Toast.LENGTH_SHORT).show();
 
             //-- sort the events
             Collections.sort(this.m_eventList);
@@ -129,7 +129,9 @@ public class ViewCalendarActivity extends AppCompatActivity {
                 ittr++;
             }
 
-            ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors);
+            //Toast.makeText(this, Integer.toString(ittr), Toast.LENGTH_SHORT).show();
+
+            ListAdapter customListAdapter = new CustomAdapter(this, Descrip, Times, Colors, ittr);
             ListView customListView = findViewById(R.id.CalendarEventList);
             customListView.setAdapter(customListAdapter);
 
@@ -140,8 +142,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                             //-- check if this intent is a header
-                            //if (Indexes[position] != -1) {
-                            if (!Times[position].equals("NULL")) {
+                            if (Indexes[position] != -1) {
                                 CalendarEvent tempEvent = m_eventList.get(Indexes[position]);
                                 String eventAsJson = tempEvent.toJson();
                                 Intent intent = new Intent(ViewCalendarActivity.this, ViewEventActivity.class);
