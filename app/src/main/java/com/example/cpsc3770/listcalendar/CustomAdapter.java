@@ -16,12 +16,14 @@ public class CustomAdapter extends ArrayAdapter<String> {
     private String[] desc_list;
     private String[] time_list;
     private int[] color_list;
+    private int n;
 
-    public CustomAdapter(Context context, String[] inputList, String[] inputTime, int[] inputColor) {
+    public CustomAdapter(Context context, String[] inputList, String[] inputTime, int[] inputColor, int total) {
         super(context, R.layout.custom_list_adapter, inputList);
         desc_list = inputList;
         time_list = inputTime;
         color_list = inputColor;
+        n = total;
     }
 
     @Override
@@ -34,29 +36,39 @@ public class CustomAdapter extends ArrayAdapter<String> {
         LinearLayout displayA = (LinearLayout) customView.findViewById(R.id.displayA);
         LinearLayout displayB = (LinearLayout) customView.findViewById(R.id.displayB);
 
-        //String singleEvent = getItem(position);
-        TextView itemText = (TextView) customView.findViewById(R.id.calendarListTitle);
-        TextView itemTime = (TextView) customView.findViewById(R.id.calendarListTitle2);
-        ImageView calendarImage = (ImageView) customView.findViewById(R.id.calendarListImage);
-        TextView dateBox = (TextView) customView.findViewById(R.id.dateBox);
+        if (position < n) {
 
-        if (time_list != null && time_list[position] != null) {
+            //String singleEvent = getItem(position);
+            TextView itemText = (TextView) customView.findViewById(R.id.calendarListTitle);
+            TextView itemTime = (TextView) customView.findViewById(R.id.calendarListTitle2);
+            ImageView calendarImage = (ImageView) customView.findViewById(R.id.calendarListImage);
+            TextView dateBox = (TextView) customView.findViewById(R.id.dateBox);
 
-            if (time_list[position].equals("NULL")) {
+            if (color_list[position] == -1) {
 
-            displayA.setVisibility(View.GONE);
-            displayB.setVisibility(View.VISIBLE);
+                displayA.setVisibility(View.GONE);
+                displayB.setVisibility(View.VISIBLE);
 
-            //dateBox.setText(singleEvent);
-            dateBox.setText(desc_list[position]);
+                //dateBox.setText(singleEvent);
+                dateBox.setText(desc_list[position]);
 
             } else {
+
+                displayA.setVisibility(View.VISIBLE);
+                displayB.setVisibility(View.GONE);
 
                 itemText.setText(desc_list[position]);
                 itemTime.setText(time_list[position]);
                 calendarImage.setImageResource(color_list[position]);
             }
+
+            return customView;
         }
+
+        //-- if we are out of range, display nothing
+        displayA.setVisibility(View.GONE);
+        displayB.setVisibility(View.GONE);
         return customView;
     }
+
 }
