@@ -5,13 +5,13 @@ import com.google.gson.Gson;
 import java.util.List;
 
 class ColorList {
-    private List<Integer> m_colorList;
+    private List<String> m_colorList;
 
-    public List<Integer> viewColorList(){
+    public List<String> viewColorList(){
         return this.m_colorList;
     }
 
-    public void setColorList(List<Integer> colorList){
+    public void setColorList(List<String> colorList){
         this.m_colorList = colorList;
     }
 

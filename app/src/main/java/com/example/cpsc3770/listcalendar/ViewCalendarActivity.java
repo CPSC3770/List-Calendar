@@ -19,11 +19,14 @@ import java.util.Collections;
 public class ViewCalendarActivity extends AppCompatActivity {
     // Member variables
     List<CalendarEvent> m_eventList;
-    List<Integer> m_colors;
+    List<String> m_colors;
+
     private String[] Descrip;
     private String[] Times;
     private int[] Colors;
     private int[] Indexes;
+    private String[] Color_List = {"Red","Blue","Green","Yellow","Purple","Pink","Grey"};
+
 
     public static final String KEY_EVENT_LIST = "KEY_EVENT_LIST";
     public static final String KEY_COLOR_LIST = "KEY_COLOR_LIST";
@@ -47,7 +50,7 @@ public class ViewCalendarActivity extends AppCompatActivity {
         //-- Initialize the colors to display
         this.m_colors = new ArrayList<>();
         for(int i = 0; i < NUM_COLORS; i++){
-            this.m_colors.add(i);
+            this.m_colors.add(Color_List[i]);
         }
     }
 
@@ -103,30 +106,41 @@ public class ViewCalendarActivity extends AppCompatActivity {
             String LastDate = " ";
             int ittr = 0;
 
-            for(int i = 0; i < this.m_eventList.size(); i++){
+            for (int i = 0; i < this.m_eventList.size(); i++){
 
-                if (!LastDate.equals(this.m_eventList.get(i).viewFromDateAsString())) {
+                //-- if the current event's color is among the events we would like to show
+                //-- then follow the correct methods for displaying in our adapter
+                for (int j = 0; j < this.m_colors.size(); j++) {
+                    if (this.m_eventList.get(i).viewColor().getColorName().equals(this.m_colors.get(j))) {
 
-                    //-- Set expected values for the header
-                    Descrip[ittr] = this.m_eventList.get(i).getDateDisplay();
-                    Times[ittr] = "NULL";
-                    Colors[ittr] = -1;
-                    Indexes[ittr] = -1; // make sure we know this index was a header
+                        //-- if the current event has a different date than the last,
+                        //-- allocate space for a header for this new date
+                        if (!LastDate.equals(this.m_eventList.get(i).viewFromDateAsString())) {
 
-                    //-- Grab the last date of a header
-                    LastDate = this.m_eventList.get(i).viewFromDateAsString();
+                            //-- Set expected values for the header
+                            Descrip[ittr] = this.m_eventList.get(i).getDateDisplay();
+                            Times[ittr] = "NULL";
+                            Colors[ittr] = -1;
+                            Indexes[ittr] = -1; // make sure we know this index was a header
 
-                    //-- Increase iterator to next position
-                    ittr++;
+                            //-- Grab the last date of a header
+                            LastDate = this.m_eventList.get(i).viewFromDateAsString();
+
+                            //-- Increase iterator to next position
+                            ittr++;
+                        }
+
+                        //-- set information about this position
+                        Descrip[ittr] = this.m_eventList.get(i).viewTitle();
+                        Times[ittr] = this.m_eventList.get(i).viewTimeAsString();
+                        Colors[ittr] = this.m_eventList.get(i).viewColor().getColorImg();
+                        Indexes[ittr] = i; // make sure we can find this index of m_eventList later
+
+                        ittr++;
+
+                        break;
+                    }
                 }
-
-                //-- set information about this position
-                Descrip[ittr] = this.m_eventList.get(i).viewTitle();
-                Times[ittr]   = this.m_eventList.get(i).viewTimeAsString();
-                Colors[ittr]  = this.m_eventList.get(i).viewColor().getColorImg();
-                Indexes[ittr] = i; // make sure we can find this index of m_eventList later
-
-                ittr++;
             }
 
             //Toast.makeText(this, Integer.toString(ittr), Toast.LENGTH_SHORT).show();
@@ -153,6 +167,14 @@ public class ViewCalendarActivity extends AppCompatActivity {
                         }
                     }
             );
+
+            //-- if no events were created
+            if (ittr == 0) {
+                //-- display a message when empty
+                customListView = findViewById(R.id.CalendarEventList);
+                customListView.setEmptyView(findViewById(R.id.emptyList));
+                //-- TODO: Instead of showing "You Have no Events" Display "Events Exist, but are all filtered out. Unrestrict Filter or Press the + button to create a new one"
+            }
 
         } else {
             //-- display a message when empty

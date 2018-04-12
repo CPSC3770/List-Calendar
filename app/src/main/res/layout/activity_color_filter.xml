@@ -8,27 +8,108 @@
 
     <Button
         android:id="@+id/ApplyFilterChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="6dp"
         android:text="Apply Filters"
-        app:layout_constraintEnd_toStartOf="@id/guideline2"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline2" />
 
     <Button
         android:id="@+id/CancelFilterChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginStart="6dp"
         android:text="Cancel Changes"
-        app:layout_constraintStart_toEndOf="@id/guideline2"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline2" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="192dp" />
+        app:layout_constraintGuide_begin="180dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/RedDisplay">
+            <ImageView android:id="@+id/RedImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/red" />
+            <TextView  android:id="@+id/RedTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Red" />
+            <CheckBox  android:id="@+id/RedCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/BlueDisplay">
+            <ImageView android:id="@+id/BlueImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/blue" />
+            <TextView  android:id="@+id/BlueTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Blue" />
+            <CheckBox  android:id="@+id/BlueCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/GreenDisplay">
+            <ImageView android:id="@+id/GreenImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/green" />
+            <TextView  android:id="@+id/GreenTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Green" />
+            <CheckBox  android:id="@+id/GreenCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/YellowDisplay">
+            <ImageView android:id="@+id/YellowImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/yellow" />
+            <TextView  android:id="@+id/YellowTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Yellow" />
+            <CheckBox  android:id="@+id/YellowCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/PurpleDisplay">
+            <ImageView android:id="@+id/PurpleImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/purple" />
+            <TextView  android:id="@+id/PurpleTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Purple" />
+            <CheckBox  android:id="@+id/PurpleCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/PinkDisplay">
+            <ImageView android:id="@+id/PinkImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/pink" />
+            <TextView  android:id="@+id/PinkTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Pink" />
+            <CheckBox  android:id="@+id/PinkCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/GreyDisplay">
+            <ImageView android:id="@+id/GreyImageView" android:layout_width="25dp"  android:layout_height="match_parent" android:layout_weight="1" android:padding="5dp" android:src="@drawable/grey" />
+            <TextView  android:id="@+id/GreyTextView"  android:layout_width="220dp" android:layout_height="match_parent" android:gravity="center_vertical" android:padding="5dp" android:textSize="30sp" android:text="Grey" />
+            <CheckBox  android:id="@+id/GreyCheckBox"  android:layout_width="80dp"  android:layout_height="match_parent" android:padding="5dp" android:checked="false"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
